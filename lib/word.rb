@@ -1,7 +1,10 @@
 require './lib/def'
 class Word
   attr_accessor :id, :word, :def
-    @words = {}
+    @@words = {}
+    @@total_rows = 0
 
-  end
+    def initialize (word, id, def)
+      @name = name
+      @id = id
 end
