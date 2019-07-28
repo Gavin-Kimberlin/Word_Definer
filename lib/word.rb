@@ -1,10 +1,13 @@
-require './lib/def'
+~/require './lib/def'
 class Word
   attr_accessor :id, :word, :def
     @@words = {}
     @@total_rows = 0
 
-    def initialize (word, id, def)
-      @name = name
-      @id = id
+  def initialize (word, id, def)
+    @name = name
+    @id = id || @@ total_rows += 1
+  end
+
+
 end
