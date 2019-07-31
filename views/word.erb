@@ -1,7 +1,7 @@
 <h2><%= @album.name %></h2>
 <h3>Definition(s): </h3>
 
-  <% if @word.definitions %>
+  <% if @word.definition %>
     <ul>
       <% @word.definitions.each do |definition| %>
         <li><a href="/words/<%= @word.id %>/definitions/<%= definition.id %>"><%= definition.name %></a></li>

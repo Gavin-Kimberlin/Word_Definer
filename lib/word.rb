@@ -1,12 +1,12 @@
-~/require './lib/definition'
+require './lib/definition'
 class Word
-  attr_accessor :id, :name, :definition
+  attr_accessor :id, :name
     @@words = {}
     @@total_rows = 0
 
-  def initialize (name, id, definition)
+  def initialize (name, id)
     @name = name
-    @id = id || @@ total_rows += 1
+    @id = id || @@total_rows += 1
   end
 
   def self.all
@@ -14,15 +14,15 @@ class Word
   end
 
   def save
-    @@words[self.id] = Words.new(self.name, self.id, self.definition)
+    @@words[self.id] = Word.new(self.name, self.id)
   end
 
-  def == (album_to_compare)
+  def == (word_to_compare)
     self.name() == word_to_compare.name()
   end
 
   def self.clear
-    @@albums = {}
+    @@words = {}
     @@total_rows = 0
   end
 
@@ -30,10 +30,9 @@ class Word
     @@words[id]
   end
 
-  def update(name, id, definition)
+  def update(name, id)
     self.name = name
     self.id = id
-    self.definition = definition
   end
 
   def delete
@@ -41,7 +40,7 @@ class Word
   end
 
   def self.search(search_term)
-    @@albums.select{|key, value| value.name =~/#{search_term}/}.values
+    @@words.select{|key, value| value.name =~/#{search_term}/}.values
   end
   def definitions
     Definition.find_by_word(self.id)
